@@ -1,0 +1,12 @@
+{
+  "name": "bookstore-api",
+  "version": "1.0.0",
+  "description": "Esta é uma API de livraria desenvolvida em JavaScript com Express.js, MongoDB e Mongoose que permite realizar operações CRUD (Create, Read, Update, Delete) em livros.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
