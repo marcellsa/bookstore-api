@@ -9,8 +9,7 @@
         "sourceType": "module"
     },
     "rules": {
-      "import/extensions": ["off"],
-      "no-console": ["off"],
-      "linebreak-style": ["lf"]
+        "import/extensions": ["off"],
+        "no-console": ["off"]
     }
 }
