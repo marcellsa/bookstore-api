@@ -23,9 +23,19 @@ class BookController {
   static async saveBook(req, res) {
     try {
       const newBook = await book.create(req.body);
-      res.status(201).json({ message: 'Livro criado com sucesso', book: newBook });
+      res.status(201).json({ message: 'Livro cadastrado com sucesso', book: newBook });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha ao cadastrar livro` });
+      res.status(500).json({ message: `${erro.message} - falha no cadastro do livro` });
+    }
+  }
+
+  static async updateBook(req, res) {
+    try {
+      const { id } = req.params;
+      await book.findByIdAndUpdate(id, req.body);
+      res.status(200).json({ message: 'Livro atualizado' });
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha na atualização do livro` });
     }
   }
 }
