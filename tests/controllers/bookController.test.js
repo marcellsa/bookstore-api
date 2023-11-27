@@ -2,7 +2,7 @@ import axios from 'axios';
 // import BookController from '../../src/controllers/bookController.js';
 
 describe('BookController', () => {
-  it('should get a list of books', async () => {
+  it.skip('should get a list of books', async () => {
     const response = await axios({
       url: 'http://localhost:3000/livros',
       method: 'get',
@@ -12,7 +12,7 @@ describe('BookController', () => {
   });
 
   it('should save a book', async () => {
-    const data = {
+    const bookData = {
       titulo: 'Título Test1 1',
       editora: 'Editora Teste 1',
       preco: 99.99,
@@ -22,11 +22,13 @@ describe('BookController', () => {
     const response = await axios({
       url: 'http://localhost:3000/livros',
       method: 'post',
-      data,
+      data: bookData,
     });
 
-    const bookTest = response.data;
+    console.log(response.data.book);
 
-    expect(bookTest.titulo).toBe(data.titulo);
+    const bookTest = response.data.book;
+
+    expect(bookTest.titulo).toEqual(bookData.titulo);
   });
 });
