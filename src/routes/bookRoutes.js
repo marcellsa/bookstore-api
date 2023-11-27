@@ -3,6 +3,8 @@ import BookController from '../controllers/bookController.js';
 
 const routes = express.Router();
 
-routes.get('/livros', BookController.getBooks);
+routes
+  .get('/livros', BookController.getBooks)
+  .post('/livros', BookController.saveBook);
 
 export default routes;
