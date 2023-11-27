@@ -9,6 +9,25 @@ class BookController {
       res.status(500).json({ message: `${erro.message} - falha na requisição` });
     }
   }
+
+  static async getBook(req, res) {
+    try {
+      const { id } = req.params;
+      const bookFound = await book.findById(id);
+      res.status(200).json(bookFound);
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha na requisição` });
+    }
+  }
+
+  static async saveBook(req, res) {
+    try {
+      const newBook = await book.create(req.body);
+      res.status(201).json({ message: 'Livro criado com sucesso', book: newBook });
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha ao cadastrar livro` });
+    }
+  }
 }
 
 export default BookController;
