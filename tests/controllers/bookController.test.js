@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import axios from 'axios';
 // import BookController from '../../src/controllers/bookController.js';
 
@@ -20,21 +21,21 @@ describe('BookController', () => {
 
     expect(response.data).toHaveLength(3);
 
-    await request(`${URL}/livros/${testBook.id}`, 'delete');
+    await request(`${URL}/livros/${testBook.data.book._id}`, 'delete');
   });
 
-  it.skip('should save a book', async () => {
-    const bookData = {
-      titulo: 'Título Test 1',
-      editora: 'Editora Teste 1',
-      preco: 99.99,
-      paginas: 100,
+  it('should save a book', async () => {
+    const bookData2 = {
+      titulo: 'Título Test 2',
+      editora: 'Editora Teste 2',
+      preco: 89.99,
+      paginas: 200,
     };
 
-    const response = await request(`${URL}/livros`, 'post', bookData);
+    const response = await request(`${URL}/livros`, 'post', bookData2);
 
     const bookTest = response.data.book;
 
-    expect(bookTest.titulo).toEqual(bookData.titulo);
+    expect(bookTest.titulo).toEqual(bookData2.titulo);
   });
 });
