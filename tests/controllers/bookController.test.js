@@ -7,7 +7,7 @@ const URL = 'http://localhost:3000';
 const request = (url, method, data) => axios({ url, method, data });
 
 describe('BookController', () => {
-  it.skip('should get a list of books', async () => {
+  it('should get a list of books', async () => {
     const bookData1 = {
       titulo: 'Título Test',
       editora: 'Editora Teste',
@@ -24,7 +24,7 @@ describe('BookController', () => {
     await request(`${URL}/livros/${testBook.data.book._id}`, 'delete');
   });
 
-  it.skip('should save a book', async () => {
+  it('should save a book', async () => {
     const bookData2 = {
       titulo: 'Título Test 2',
       editora: 'Editora Teste 2',
