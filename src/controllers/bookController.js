@@ -10,7 +10,7 @@ class BookController {
     }
   }
 
-  static async getBook(req, res) {
+  static async getBookById(req, res) {
     try {
       const { id } = req.params;
       const bookFound = await book.findById(id);
