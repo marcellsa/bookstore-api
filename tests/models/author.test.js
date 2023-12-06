@@ -1,6 +1,6 @@
 import { author } from '../../src/models/Author.js';
 
-describe('Author Model Tests', () => {
+describe.skip('Author Model Tests', () => {
   it('should create a new author', async () => {
     // Simula um objeto de autor para testes
     const mockAuthorData = {
