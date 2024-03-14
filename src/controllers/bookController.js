@@ -28,8 +28,16 @@ class BookController {
       res.status(500).json({ message: `${erro.message} - falha na requisição` });
     }
   }
-
   
+  static async updateBook (req, res) {
+    try {
+      const id = req.params.id;
+      await book.findByIdAndUpdate(id, req.body);
+      res.status(200).json({ message: "livro atualizado" });
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha na atualização` });
+    }
+  }
 }
 
 export default BookController;
