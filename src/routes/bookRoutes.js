@@ -5,6 +5,7 @@ const routes = express.Router();
 
 routes
   .post("/livros", BookController.createBook)
-  .get("/livros", BookController.getBooks);
+  .get("/livros", BookController.getBooks)
+  .get("/livris/:id", BookController.getBookById);
 
 export default routes;
