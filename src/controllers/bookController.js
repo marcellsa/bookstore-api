@@ -48,6 +48,17 @@ class BookController {
       res.status(500).json({ message: `${erro.message} - falha na exclusão` });
     }
   }
+
+  static async getBooksByPublisher (req, res) {
+    const publisher = req.query.editora;
+    try {
+      const booksByPublisher = await book.find({ editora: publisher });
+      res.status(200).json(booksByPublisher);
+    } catch (erro) {
+      res.status(500).json({ message: `${erro.message} - falha na busca` });
+    }
+  }
+
 }
 
 export default BookController;

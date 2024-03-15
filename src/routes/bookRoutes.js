@@ -6,8 +6,9 @@ const routes = express.Router();
 routes
   .post("/livros", BookController.createBook)
   .get("/livros", BookController.getBooks)
+  .get("/livros/busca", BookController.getBooksByPublisher)
   .get("/livris/:id", BookController.getBookById)
   .put("/livros/:id", BookController.updateBook)
-  .delete("livris/:id", BookController.deleteBook);
+  .delete("livros/:id", BookController.deleteBook);
 
 export default routes;
