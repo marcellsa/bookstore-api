@@ -1,6 +1,7 @@
 import book from "../models/Book.js";
 
 class BookController {
+  
   static async createBook(req, res) {
     try {
       const newBook = await book.create(req.body);
