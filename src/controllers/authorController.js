@@ -24,7 +24,7 @@ class AuthorController {
     try {
       const id = req.params.id;
       const authorFound = await author.findById(id);
-      if (authorFound != null){
+      if (authorFound !== null){
         res.status(200).json(authorFound);
       } else {
         res.status(404).send({message: "Id do Autor não localizado."});
