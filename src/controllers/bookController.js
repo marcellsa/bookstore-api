@@ -3,7 +3,7 @@ import { author } from "../models/Author.js";
 
 class BookController {
   
-  static async createBook(req, res) {
+  static async createBook(req, res, next) {
     const newBook = req.body;
     try {
       const authorFound = await author.findById(newBook.autor);
@@ -11,46 +11,46 @@ class BookController {
       const bookCreated  = await book.create(completeBook);
       res.status(201).json({ message: "Livro cadastrado com sucesso", livro: bookCreated });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha no cadastro do livro` });
+      next(erro);
     }
   }
 
-  static async getBooks(req, res) {
+  static async getBooks(req, res, next) {
     try {
       const listBooks = await book.find({});
       res.status(200).json(listBooks);
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha na requisição` });
+      next(erro);
     }
   }
 
-  static async getBookById(req, res) {
+  static async getBookById(req, res, next) {
     try {
       const { id } = req.params;
       const bookFound = await book.findById(id);
       res.status(200).json(bookFound);
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha na requisição` });
+      next(erro);
     }
   }
   
-  static async updateBook (req, res) {
+  static async updateBook (req, res, next) {
     try {
       const id = req.params.id;
       await book.findByIdAndUpdate(id, req.body);
       res.status(200).json({ message: "livro atualizado" });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha na atualização` });
+      next(erro);
     }
   }
 
-  static async deleteBook (req, res) {
+  static async deleteBook (req, res, next) {
     try {
       const id = req.params.id;
       await book.findByIdAndDelete(id);
       res.status(200).json({ message: "livro excluído com sucesso" });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha na exclusão` });
+      next(erro);
     }
   }
 
