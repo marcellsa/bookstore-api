@@ -1,11 +1,15 @@
 import book from "../models/Book.js";
+import { author } from "../models/Author.js";
 
 class BookController {
   
   static async createBook(req, res) {
+    const newBook = req.body;
     try {
-      const newBook = await book.create(req.body);
-      res.status(201).json({ message: "Livro cadastrado com sucesso", book: newBook });
+      const authorFound = await author.findById(newBook.autor);
+      const completeBook = { ...newBook, autor: {...authorFound._doc}};
+      const bookCreated  = await book.create(completeBook);
+      res.status(201).json({ message: "Livro cadastrado com sucesso", livro: bookCreated });
     } catch (erro) {
       res.status(500).json({ message: `${erro.message} - falha no cadastro do livro` });
     }
