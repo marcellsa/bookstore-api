@@ -11,12 +11,12 @@ class AuthorController {
     }
   }
 
-  static async getAuthors (req, res) {
+  static async getAuthors (req, res, next) {
     try {
       const listAuthors = await author.find({});
       res.status(200).json(listAuthors);
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha na requisição` });
+      next(erro);
     }
   }
 
