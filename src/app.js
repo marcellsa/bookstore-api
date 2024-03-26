@@ -1,6 +1,6 @@
 import express from "express";
 import connectToDatabase from "./config/database.js";
-import notFoundHandler from "./middlewares/notFoundHandler.js";
+import handleNotFound from "./middlewares/handleNotFound.js";
 import errorHandler from "./middlewares/errorHandler.js";
 import routes from "./routes/index.js";
 
@@ -16,7 +16,7 @@ connection.once("open", () => {
 
 const app = express();
 routes(app);
-app.use(notFoundHandler);
+app.use(handleNotFound);
 
 // eslint-disable-next-line no-unused-vars
 app.use(errorHandler);
