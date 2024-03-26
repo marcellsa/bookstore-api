@@ -1,7 +1,7 @@
 import express from "express";
 import connectToDatabase from "./config/database.js";
 import handleNotFound from "./middlewares/handleNotFound.js";
-import errorHandler from "./middlewares/errorHandler.js";
+import handleErrors from "./middlewares/errorHandler.js";
 import routes from "./routes/index.js";
 
 const connection = await connectToDatabase();
@@ -19,6 +19,6 @@ routes(app);
 app.use(handleNotFound);
 
 // eslint-disable-next-line no-unused-vars
-app.use(errorHandler);
+app.use(handleErrors);
 
 export default app;
