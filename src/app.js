@@ -1,7 +1,7 @@
 import express from "express";
 import connectToDatabase from "./config/database.js";
 import handleNotFound from "./middlewares/handleNotFound.js";
-import handleErrors from "./middlewares/errorHandler.js";
+import handleErrors from "./middlewares/handleErrors.js";
 import routes from "./routes/index.js";
 
 const connection = await connectToDatabase();
