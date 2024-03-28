@@ -28,7 +28,11 @@ class BookController {
     try {
       const { id } = req.params;
       const bookFound = await book.findById(id);
-      res.status(200).json(bookFound);
+      if (bookFound !== null){
+        res.status(200).json(bookFound);
+      } else {
+        res.status(404).send({message: "Id do Livro não localizado."});
+      }      
     } catch (erro) {
       next(erro);
     }
